@@ -1,15 +1,17 @@
 # Retro-Go (ESP32-S3 + ST7789)
 
-Đây là **bản mod Retro-Go** cho **ESP32-S3 DevKit** và màn hình **TFT LCD ST7789 240×320 (SPI)**.  
-Repo này chỉ công khai **file firmware `.img`** để nạp trực tiếp cho ESP32-S3, không chứa source code.
+MOD của [Retro-Go](https://github.com/ducalex/retro-go) dành cho **ESP32-S3 DevKit** và màn hình **TFT LCD ST7789 240×320 (SPI)**.
+
+> Retro-Go là firmware giả lập (NES, GB, GBC, SMS, GG, PCE, Doom, v.v.) cho ESP32. Repo này là bản **mod** để hỗ trợ **ESP32-S3 DevKit** cùng màn hình **ST7789 240×320**.
 
 ---
 
-## 🔥 Tính năng
-- Chạy Retro-Go 1.45 trên ESP32-S3 (N16R8).
-- Hỗ trợ màn hình TFT ST7789/7789V 240×320 SPI.
-- Hỗ trợ các giả lập: NES, GB, GBC, SMS, GG, PCE, Doom, v.v.
-- Hỗ trợ font và ngôn ngữ tiếng Việt.
+## ✨ Điểm khác biệt so với repo gốc
+- Hỗ trợ build cho **ESP32-S3 DevKit** (N16R8).
+- Thêm driver cho **màn hình ST7789/ST7789V SPI 240×320**.
+- Cập nhật cấu hình chân SPI, backlight, nút bấm.
+- Fix một số lỗi build với ESP-IDF 4.x / 5.x.
+- Bổ sung font Unicode (có hỗ trợ tiếng Việt).
 
 ---
 
@@ -23,9 +25,9 @@ Vào mục [**Releases**](../../releases) để tải file `.img`.
 Dùng [esptool](https://github.com/espressif/esptool):
 
 ```bash
-python -m esptool --chip esp32s3 -p COMx -b 460800 \
+python -m esptool --chip esp32s3 -p COMx -b 921600 \
   --before default-reset --after hard-reset \
-  write_flash --flash-size 16MB 0x0 retro-go_esp32s3-st7789.img
+  write_flash --flash-size 16MB 0x0 retro-go_1.45-dirty_esp32s3-devkit-c.img
 ````
 Thay COMx bằng cổng COM của ESP32-S3 trên máy tính.
 
